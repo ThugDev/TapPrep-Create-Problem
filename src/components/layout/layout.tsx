@@ -6,7 +6,9 @@ const RootLayout = () => {
     return (
         <>
             <Header />
-            <Outlet />
+            <div className="h-[calc(100vh-50px)]">
+                <Outlet />
+            </div>
             <Footer />
         </>
     )
