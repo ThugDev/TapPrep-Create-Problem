@@ -5,6 +5,7 @@ const ProblemListContent = ({
     hasNextPage,
     fetchNextPage,
     isFetchingNextPage,
+    handleSelecteProblem,
 }: ProblemListContentProps) => {
     return (
         <div className="w-full h-[500px] overflow-y-auto flex-center flex-col py-12 ">
@@ -17,6 +18,9 @@ const ProblemListContent = ({
                         <div
                             key={problem.problem_id}
                             className="w-[300px] flex-center p-2 my-2 cursor-pointer hover:bg-gray-600 rounded-lg"
+                            onClick={() =>
+                                handleSelecteProblem(problem.problem_id)
+                            }
                         >
                             <h2>{problem.title}</h2>
                         </div>

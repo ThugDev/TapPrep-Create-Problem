@@ -8,4 +8,5 @@ export type ProblemListContentProps = {
     hasNextPage: boolean
     fetchNextPage: () => void
     isFetchingNextPage: boolean
+    handleSelecteProblem: (problem_id: number) => void
 }

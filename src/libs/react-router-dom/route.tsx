@@ -4,6 +4,7 @@ import Home from '../../pages/home'
 import CreateProblem from '../../pages/create-problem'
 import SelectedSector from '../../pages/selectedSector'
 import ProblemList from '../../pages/problem-list'
+import ProblemDetail from '../../pages/problem-detail'
 
 export const router = createBrowserRouter([
     {
@@ -25,6 +26,10 @@ export const router = createBrowserRouter([
             {
                 path: '/selectedSector',
                 element: <SelectedSector />,
+            },
+            {
+                path: `/selectedSector/problemList/problemDetail`,
+                element: <ProblemDetail />,
             },
         ],
     },
