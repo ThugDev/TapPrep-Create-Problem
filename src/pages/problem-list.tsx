@@ -1,14 +1,17 @@
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { SectorDataType } from './type'
 import { useState } from 'react'
 import { useProblemList } from '../hooks/useProblemList'
 import DifficultySelector from '../components/problemList/difficultySelector'
 import ProblemListContent from '../components/problemList/problemListContent'
+import LoadingPage from '../components/common/loading-page'
+import ErrorPage from '../components/common/error-page'
 
 const ProblemList = () => {
     const { state } = useLocation()
     const sector: SectorDataType = state.sector
     const [selectedDifficulty, setSelectedDifficulty] = useState(1)
+    const navigate = useNavigate()
 
     const {
         data,
@@ -22,8 +25,14 @@ const ProblemList = () => {
         difficulty: selectedDifficulty,
     })
 
-    if (isLoading) <div>Loading...</div>
-    if (isError) <div>"문제 데이터를 불러오는데 오류가 발생했습니다."</div>
+    if (isLoading) <LoadingPage />
+    if (isError) <ErrorPage message="문제 데이터가 없습니다." />
+
+    const handleSelectProblem = (problem_id: number) => {
+        navigate('/selectedSector/problemList/problemDetail', {
+            state: { problem_id: problem_id },
+        })
+    }
 
     return (
         <div className="w-full h-full flex-center flex-col ">
@@ -39,6 +48,7 @@ const ProblemList = () => {
                 fetchNextPage={fetchNextPage}
                 hasNextPage={hasNextPage}
                 isFetchingNextPage={isFetchingNextPage}
+                handleSelecteProblem={handleSelectProblem}
             />
         </div>
     )
