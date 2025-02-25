@@ -1,20 +1,35 @@
 import { useNavigate } from 'react-router-dom'
-import { ProblemArray } from '../constants/problemArray'
 
 const Home = () => {
     const navigate = useNavigate()
 
+    const handleClick = () => {
+        navigate('/signIn')
+    }
+
     return (
-        <div className="w-full h-full flex flex-col gap-12 justify-center items-center">
-            {ProblemArray.map((item, index) => (
-                <div
-                    key={index}
-                    className="w-80 p-4 shadow-sm shadow-gray-700 rounded-lg flex justify-center items-center cursor-pointer hover:bg-[#595959]"
-                    onClick={() => navigate(item.link)}
-                >
-                    {item.text}
+        <div className="relative w-full h-full">
+            <div className="w-full flex-center flex-col absolute top-1/3 z-10 ">
+                <div className="text-2xl font-bold">어서오세요, 면접자 님!</div>
+                <div className=" w-full flex-center flex-col text-xs mt-12">
+                    <p>Tapping으로 간편하게 면접을 대비해 볼까요?</p>
+                    <p>
+                        틈틈히 핸드폰으로 연습할 수 있게 Tap&Prep이
+                        도와드릴게요!
+                    </p>
                 </div>
-            ))}
+                <div className="py-12">
+                    <button
+                        onClick={handleClick}
+                        className="w-76 py-3 rounded-lg gap-x-2 flex-center flex-row cursor-pointer text-xs text-white bg-[#073955]"
+                    >
+                        DashBoard 보러 가기
+                    </button>
+                </div>
+            </div>
+            <div className="fixed bottom-0">
+                <img src="/assets/image/web-bg-image.svg" />
+            </div>
         </div>
     )
 }

@@ -1,8 +1,26 @@
 const Header = () => {
     return (
-        <div className="w-full h-[50px] bg-[#212121] fixed">
-            <div className="w-full h-full text-2xl font-bold flex justify-center items-center text-white">
-                TAP PREP WEB
+        <div className="w-full h-[50px] flex justify-center items-center bg-[#fff] fixed border-b-[1px] border-[#e3e5eb]">
+            <div className="w-[90%] h-full font-bold flex justify-between items-center text-black">
+                <div>Tap&Prep</div>
+                <div className="flex flex-row gap-x-1">
+                    <div className="px-1">
+                        <img
+                            src="/assets/icon/Cat_Profile.svg"
+                            width={28}
+                            height={28}
+                            className=" cursor-pointer"
+                        />
+                    </div>
+                    <div className="px-1">
+                        <img
+                            src="/assets/icon/Doorbell.svg"
+                            width={28}
+                            height={28}
+                            className=" cursor-pointer"
+                        />
+                    </div>
+                </div>
             </div>
         </div>
     )
