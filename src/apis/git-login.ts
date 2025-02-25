@@ -1,4 +1,3 @@
-import { setLocalAccessToken } from '../utils/storage'
 import { axiosInstance } from './axios-instance'
 import {
     GitLoginResponse,
@@ -36,7 +35,7 @@ export const postRefreshToken = async ({
         )
 
         if (response.data) {
-            setLocalAccessToken('accessToken')
+            Cookies.set('accessToken', response.data.accessToken)
         }
 
         return response.data

@@ -1,25 +1,27 @@
 import axios from 'axios'
-import { setLocalAccessToken, setLocalRefreshToken } from './storage'
+import Cookies from 'js-cookie'
 
 export async function refreshTokens() {
     try {
-        // 저장된 리프레시 토큰 가져오기 (예: localStorage에서)
-        const refreshToken = localStorage.getItem('refreshToken')
+        const refreshToken = Cookies.get('refreshtoken')
         if (!refreshToken) throw new Error('리프레시 토큰 없음')
-
-        // 토큰 갱신 엔드포인트 호출
         const response = await axios.post(
             `${import.meta.env.VITE_BASE_URL}/api/auth/refresh`,
             {
                 refreshToken,
             }
         )
-
         const { accessToken, newRefreshToken } = response.data
-
-        // 새로운 토큰 저장
-        setLocalAccessToken(accessToken)
-        setLocalRefreshToken(newRefreshToken)
+        Cookies.set('accessToken', accessToken, {
+            expires: 1,
+            secure: true,
+            sameSite: 'strict',
+        })
+        Cookies.set('refreshToken', newRefreshToken, {
+            expires: 7,
+            secure: true,
+            sameSite: 'strict',
+        })
 
         return accessToken
     } catch (error) {

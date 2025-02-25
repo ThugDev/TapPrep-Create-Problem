@@ -1,23 +1,23 @@
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import RootLayout from '../../components/layout/layout'
-import { getLocalAccessToken } from '../../utils/storage'
+import Cookies from 'js-cookie'
 
 const AdminRouter: React.FC = () => {
     const navigate = useNavigate()
     const location = useLocation()
-    const sessionToken = getLocalAccessToken()
+    const token = Cookies.get('accessToken')
 
     useEffect(() => {
         if (location.pathname === '/dashboard') {
-            if (!sessionToken) {
+            if (!token) {
                 navigate('/signIn')
             }
         }
-        if (location.pathname === '/signIn' && sessionToken) {
+        if (location.pathname === '/signIn' && token) {
             navigate('/dashboard')
         }
-    }, [navigate, location.pathname, sessionToken])
+    }, [navigate, location.pathname, token])
     return <RootLayout />
 }
 
