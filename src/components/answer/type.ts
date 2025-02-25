@@ -1,5 +1,5 @@
 import { GetProblemDetailResponse } from '../../apis/type'
-import { useAnswerForm } from '../../hooks/useAnswerForm'
+import { useAnswerForm } from '../../hooks/use-answer-form'
 
 // difficulty 변경 핸들러 타입
 export type handleDifficultyProps = {

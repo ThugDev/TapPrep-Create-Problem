@@ -1,4 +1,4 @@
-import { DifficultyData } from '../../constants/difficultyData'
+import { DifficultyData } from '../../constants/difficulty-data'
 
 export type DifficultySelectorProps = {
     selectedDifficulty: number

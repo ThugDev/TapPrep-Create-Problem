@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { getLocalAccessToken } from '../utils/storage'
-import { refreshTokens } from '../utils/refreshTokens'
+import { refreshTokens } from '../utils/refresh-tokens'
 
 export const axiosInstance = axios.create({
     baseURL: `${import.meta.env.VITE_BASE_URL}`,

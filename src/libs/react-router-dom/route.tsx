@@ -1,13 +1,13 @@
 import { createBrowserRouter, RouteObject } from 'react-router-dom'
 import Home from '../../pages/home'
 import CreateProblem from '../../pages/create-problem'
-import SelectedSector from '../../pages/selectedSector'
+import SelectedSector from '../../pages/selected-sector'
 import ProblemList from '../../pages/problem-list'
 import ProblemDetail from '../../pages/problem-detail'
-import AdminRouter from './memberRouter'
+import AdminRouter from './member-router'
 import SignIn from '../../pages/sign-in'
 import Auth from '../../auth/page'
-import DashBoard from '../../pages/dashBoard'
+import DashBoard from '../../pages/dash-board'
 
 const MEMBER_ROUTER: RouteObject = {
     element: <AdminRouter />,

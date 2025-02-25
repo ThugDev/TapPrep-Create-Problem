@@ -1,5 +1,5 @@
 import { setLocalAccessToken } from '../utils/storage'
-import { axiosInstance } from './axiosInstance'
+import { axiosInstance } from './axios-instance'
 import {
     GitLoginResponse,
     PostRefreshTokenProps,

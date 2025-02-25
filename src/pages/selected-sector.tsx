@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
-import { SectorData } from '../constants/sectorData'
+
 import { SectorDataType } from './type'
+import { SectorData } from '../constants/sector-data'
 
 const SelectedSector = () => {
     const navigate = useNavigate()

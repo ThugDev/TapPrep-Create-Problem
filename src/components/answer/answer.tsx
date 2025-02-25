@@ -1,5 +1,6 @@
-import { useAnswerForm } from '../../hooks/useAnswerForm'
-import { useAnswerInitialization } from '../../hooks/useAnswerInitialzation'
+import { useAnswerForm } from '../../hooks/use-answer-form'
+import { useAnswerInitialization } from '../../hooks/use-answer-initialzation'
+
 import { useSubmitAnswer } from '../../hooks/useSubmitAnswer'
 import ErrorPage from '../common/error-page'
 import OptionList from '../option-list'
