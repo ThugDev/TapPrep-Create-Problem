@@ -87,3 +87,15 @@ export type LoginUserData = {
     profile_image: string
     username?: string
 }
+
+// user.ts 의 타입
+export type UserProfileResponse = {
+    statusCode: number
+    message: string
+    userData: {
+        username: string
+        nickname: string
+        profile_image: string
+        level: string
+    }
+}

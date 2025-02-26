@@ -1,3 +1,5 @@
+import { TapPerpContent } from '../constants/tapprep-content'
+
 const SignIn = () => {
     const gitLoginURL = `https://github.com/login/oauth/authorize?client_id=${import.meta.env.VITE_GITHUB_CLIENT_ID}&state=web`
 
@@ -11,11 +13,8 @@ const SignIn = () => {
                 <img src="/assets/image/git_img.png" />
                 <div className="flex-center flex-col py-12">
                     <p className="text-2xl font-bold pb-6">로그인해 주세요</p>
-                    <p>Tapping으로 간편하게 면접을 대비해 볼까요?</p>
-                    <p>
-                        틈틈히 핸드폰으로 연습할 수 있게 Tap&Prep이
-                        도와드릴게요!
-                    </p>
+                    <p>{TapPerpContent.text1}</p>
+                    <p>{TapPerpContent.text2}</p>
                 </div>
                 <button
                     onClick={handleGitLogin}

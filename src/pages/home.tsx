@@ -1,22 +1,36 @@
+import { useQuery } from '@tanstack/react-query'
 import { useNavigate } from 'react-router-dom'
+import { getUserProfile } from '../apis/user'
+import { TapPerpContent } from '../constants/tapprep-content'
 
 const Home = () => {
     const navigate = useNavigate()
+
+    const { data, isLoading, isError } = useQuery({
+        queryKey: ['userData'],
+        queryFn: getUserProfile,
+    })
 
     const handleClick = () => {
         navigate('/signIn')
     }
 
+    if (isLoading) <div>Loading...</div>
+    if (isError) <div>유저 데이터 오류</div>
+
     return (
         <div className="relative w-full h-full">
             <div className="w-full flex-center flex-col absolute top-1/3 z-10 ">
-                <div className="text-2xl font-bold">어서오세요, 면접자 님!</div>
+                <div className="text-2xl font-bold">
+                    어서오세요,{' '}
+                    {data?.userData.nickname
+                        ? data.userData.nickname
+                        : '면접자'}
+                    님!
+                </div>
                 <div className=" w-full flex-center flex-col text-xs mt-12">
-                    <p>Tapping으로 간편하게 면접을 대비해 볼까요?</p>
-                    <p>
-                        틈틈히 핸드폰으로 연습할 수 있게 Tap&Prep이
-                        도와드릴게요!
-                    </p>
+                    <p>{TapPerpContent.text1}</p>
+                    <p>{TapPerpContent.text2}</p>
                 </div>
                 <div className="py-12">
                     <button

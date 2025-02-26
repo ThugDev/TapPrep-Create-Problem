@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import RootLayout from '../../components/layout/layout'
 import Cookies from 'js-cookie'
 
-const AdminRouter: React.FC = () => {
+const AdminRouter = () => {
     const navigate = useNavigate()
     const location = useLocation()
     const token = Cookies.get('accessToken')
