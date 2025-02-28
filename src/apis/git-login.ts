@@ -12,8 +12,14 @@ export const postGitLogin = async (code: string) => {
             `/api/auth/git/token`,
             { code }
         )
-        if (response.data && response.data.token) {
+        if (
+            response.data &&
+            response.data.token &&
+            response.data.userData.username
+        ) {
             Cookies.set('accessToken', response.data.token.accessToken, {})
+            Cookies.set('refreshToken', response.data.token.refreshToken, {})
+            localStorage.setItem('userName', response.data.userData.username)
         }
         return response.data
     } catch {

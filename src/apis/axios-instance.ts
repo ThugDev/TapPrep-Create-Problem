@@ -32,16 +32,14 @@ axiosInstance.interceptors.response.use(
     (response) => response,
     async (error) => {
         const originalRequest = error.config
-
         if (error.response?.status === 401 && !originalRequest._retry) {
             originalRequest._retry = true
             try {
                 await refreshTokens()
-
                 const newToken = Cookies.get('accessToken')
                 if (newToken) {
                     originalRequest.headers.Authorization = `bearer ${newToken}`
-                    return axios(originalRequest) // 재시도
+                    return axiosInstance(originalRequest)
                 }
             } catch (refreshError) {
                 console.error('토큰 갱신 실패', refreshError)

@@ -60,11 +60,12 @@ export type PostProblemAnswerResponse = {
 }
 
 export type PostRefreshTokenProps = {
-    username: string
+    username: string | null
     refreshToken: string
 }
 
 export type RefreshTokenResponse = {
+    data: { accessToken: string; newRefreshToken: string }
     statusCode: number
     message: string
     accessToken: string
@@ -98,4 +99,16 @@ export type UserProfileResponse = {
         profile_image: string
         level: string
     }
+}
+
+export type statType = {
+    correct: number
+    sector_name: string
+    total: number
+}
+
+export type GetStatFeResponse = {
+    statusCode: number
+    message: string
+    stats: statType[]
 }
