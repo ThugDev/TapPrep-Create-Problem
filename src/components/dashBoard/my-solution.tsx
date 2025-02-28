@@ -1,10 +1,14 @@
 import { useMemo, useState } from 'react'
 import { ToggleType } from './type'
 import ToggleSwitch from './toggle-switch'
-import { BeSectorData, FeSectorData } from '../../constants/solutionIconImages'
+
 import { useSuspenseQuery } from '@tanstack/react-query'
 import { getStatBe, getStatFe } from '../../apis/stat'
-import { MergedSector } from '../../utils/mergedSector'
+import { MergedSector } from '../../utils/merged-sector'
+import {
+    BeSectorData,
+    FeSectorData,
+} from '../../constants/solution-icon-images'
 
 const MySolutions = () => {
     const [currentView, setCurrentView] = useState('FE')

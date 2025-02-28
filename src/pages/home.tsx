@@ -12,7 +12,7 @@ const Home = () => {
     }
 
     return (
-        <div className="relative w-full h-full">
+        <div className="relative w-full h-full bg-white">
             <div className="w-full flex-center flex-col absolute top-1/3 z-10 ">
                 <div className="text-2xl font-bold">
                     어서오세요,{' '}
