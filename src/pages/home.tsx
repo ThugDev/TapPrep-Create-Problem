@@ -1,30 +1,23 @@
-import { useQuery } from '@tanstack/react-query'
 import { useNavigate } from 'react-router-dom'
-import { getUserProfile } from '../apis/user'
 import { TapPerpContent } from '../constants/tapprep-content'
+import { useUserProfile } from '../hooks/use-user-profile'
 
 const Home = () => {
     const navigate = useNavigate()
 
-    const { data, isLoading, isError } = useQuery({
-        queryKey: ['userData'],
-        queryFn: getUserProfile,
-    })
+    const { userProfileData } = useUserProfile()
 
     const handleClick = () => {
         navigate('/signIn')
     }
 
-    if (isLoading) <div>Loading...</div>
-    if (isError) <div>유저 데이터 오류</div>
-
     return (
-        <div className="relative w-full h-full">
+        <div className="relative w-full h-full bg-white">
             <div className="w-full flex-center flex-col absolute top-1/3 z-10 ">
                 <div className="text-2xl font-bold">
                     어서오세요,{' '}
-                    {data?.userData.nickname
-                        ? data.userData.nickname
+                    {userProfileData
+                        ? userProfileData.userData.nickname
                         : '면접자'}
                     님!
                 </div>

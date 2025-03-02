@@ -1,16 +1,15 @@
-import axios from 'axios'
 import Cookies from 'js-cookie'
+import { postRefreshToken } from '../apis/git-login'
 
-export async function refreshTokens() {
+export const refreshTokens = async () => {
     try {
-        const refreshToken = Cookies.get('refreshtoken')
+        const refreshToken = Cookies.get('refreshToken')
+        const userName = localStorage.getItem('userName')
         if (!refreshToken) throw new Error('리프레시 토큰 없음')
-        const response = await axios.post(
-            `${import.meta.env.VITE_BASE_URL}/api/auth/refresh`,
-            {
-                refreshToken,
-            }
-        )
+        const response = await postRefreshToken({
+            username: userName,
+            refreshToken: refreshToken,
+        })
         const { accessToken, newRefreshToken } = response.data
         Cookies.set('accessToken', accessToken, {
             expires: 1,

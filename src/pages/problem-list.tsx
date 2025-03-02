@@ -1,9 +1,9 @@
 import { useLocation, useNavigate } from 'react-router-dom'
 import { SectorDataType } from './type'
 import { useState } from 'react'
-import { useProblemList } from '../hooks/useProblemList'
-import DifficultySelector from '../components/problemList/difficultySelector'
-import ProblemListContent from '../components/problemList/problemListContent'
+import { useProblemList } from '../hooks/use-problem-list'
+import DifficultySelector from '../components/problemList/difficulty-selector'
+import ProblemListContent from '../components/problemList/problem-list-content'
 import LoadingPage from '../components/common/loading-page'
 import ErrorPage from '../components/common/error-page'
 

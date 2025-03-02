@@ -1,5 +1,5 @@
-import ProblemAnswerOX from '../ProblemAnswerOX'
-import ProblemAnswerText from '../ProblemAnswerText'
+import ProblemAnswerOX from '../problem-answer-ox'
+import ProblemAnswerText from '../problem-answer-text'
 import { AnswerFormProps } from './type'
 
 const AnswerForm = ({
