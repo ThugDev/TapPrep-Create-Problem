@@ -1,7 +1,7 @@
 import { useAnswerForm } from '../../hooks/use-answer-form'
 import { useAnswerInitialization } from '../../hooks/use-answer-initialzation'
+import { useSubmitAnswer } from '../../hooks/use-submit-answer'
 
-import { useSubmitAnswer } from '../../hooks/useSubmitAnswer'
 import ErrorPage from '../common/error-page'
 import OptionList from '../option-list'
 import AnswerExplanation from '../problemDetail/answer-explanation'
