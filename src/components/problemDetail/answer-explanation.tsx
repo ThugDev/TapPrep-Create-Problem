@@ -29,8 +29,8 @@ const AnswerExplanation = ({
                 </div>
             )}
             {isCorrect === false && (
-                <div className="w-full flex-center">
-                    <div className="flex flex-row items-center py-12">
+                <div className="w-full">
+                    <div className="flex-center flex-row py-12">
                         <p className="text-red-500 font-bold text-9xl">X</p>
                     </div>
                     <div>
