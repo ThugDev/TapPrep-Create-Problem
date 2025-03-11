@@ -50,7 +50,7 @@ const Answer = ({ data }: InterviewAnswerProps) => {
                 <button
                     onClick={() => submitAnswer({ formData })}
                     disabled={isAnswerDisabled}
-                    className="py-1 px-6 mt-4 border rounded cursor-pointer"
+                    className=" py-1 px-6 mt-4 border rounded cursor-pointer"
                 >
                     <p>제출</p>
                 </button>
