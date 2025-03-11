@@ -22,30 +22,33 @@ const ProblemDetail = () => {
     if (isError) <ErrorPage message="문제 데이터가 없습니다." />
 
     return (
-        <div className="w-full h-full flex-center py-20">
-            <div className="w-[80%] overflow-y-auto">
-                <div className="flex-1 flex-center flex-col">
-                    {data && (
-                        <>
-                            <ProblemContent
-                                title={data?.problemData.title}
-                                description={data?.problemData.description}
-                            />
-                            <HintButton hint={data.problemData.hint} />
-                            <Answer data={data} />
-                        </>
-                    )}
+        <div className="flex-center">
+            <div className="w-[1280px] relative max-w-full h-full grid grid-cols-2 py-20">
+                <div className="w-full overflow-y-auto">
+                    <div className="flex-1 flex-center flex-col">
+                        {data && (
+                            <>
+                                <ProblemContent
+                                    title={data?.problemData.title}
+                                    description={data?.problemData.description}
+                                />
+                                <HintButton hint={data.problemData.hint} />
+                                <Answer data={data} />
+                            </>
+                        )}
+                    </div>
                 </div>
+                <div className="h-[80%] border border-[#e9e9e9] rounded-md absolute left-1/2 top-28" />
+                {data?.isSolved === true && (
+                    <div className="w-full flex-center">
+                        <AnswerExplanation
+                            isCorrect={data?.problemData.isCorrect}
+                            explanation={data?.problemData.explanation}
+                            reference={data?.problemData.reference}
+                        />
+                    </div>
+                )}
             </div>
-            {data?.isSolved === true && (
-                <div className="w-full ">
-                    <AnswerExplanation
-                        isCorrect={data?.problemData.isCorrect}
-                        explanation={data?.problemData.explanation}
-                        reference={data?.problemData.reference}
-                    />
-                </div>
-            )}
         </div>
     )
 }
