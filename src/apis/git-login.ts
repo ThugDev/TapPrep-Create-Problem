@@ -20,6 +20,7 @@ export const postGitLogin = async (code: string) => {
             Cookies.set('accessToken', response.data.token.accessToken, {})
             Cookies.set('refreshToken', response.data.token.refreshToken, {})
             localStorage.setItem('userName', response.data.userData.username)
+            localStorage.setItem('isAdmin', response.data.role)
         }
         return response.data
     } catch {

@@ -1,7 +1,6 @@
 import { createBrowserRouter, RouteObject } from 'react-router-dom'
 import Home from '../../pages/home'
 import CreateProblem from '../../pages/create-problem'
-import SelectedSector from '../../pages/selected-sector'
 import ProblemList from '../../pages/problem-list'
 import ProblemDetail from '../../pages/problem-detail'
 import AdminRouter from './member-router'
@@ -17,7 +16,7 @@ const MEMBER_ROUTER: RouteObject = {
             element: <DashBoard />,
         },
         {
-            path: '/selectedSector/problemList',
+            path: '/dashboard/problemList/:sector',
             element: <ProblemList />,
         },
         {
@@ -25,11 +24,7 @@ const MEMBER_ROUTER: RouteObject = {
             element: <CreateProblem />,
         },
         {
-            path: '/selectedSector',
-            element: <SelectedSector />,
-        },
-        {
-            path: `/selectedSector/problemList/problemDetail`,
+            path: `/dashboard/problemDetail`,
             element: <ProblemDetail />,
         },
     ],

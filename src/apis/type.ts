@@ -1,5 +1,5 @@
 export type GetProblemListProps = {
-    sector: string
+    sector: string | undefined
     difficulty: number
     page: number | boolean
     limit: number
@@ -13,6 +13,7 @@ export type GetProblemListResponse = {
         isSolved: boolean
     }[]
     nextPage: number | boolean
+    lastPage: number
 }
 
 export type GetProblemDetailProps = {
@@ -76,6 +77,7 @@ export type GitLoginResponse = {
     statusCode: number
     token: LoginToken
     userData: LoginUserData
+    role: string
 }
 
 export type LoginToken = {

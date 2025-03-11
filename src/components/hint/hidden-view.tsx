@@ -2,7 +2,7 @@ import { HintViewProps } from './type'
 
 const HintView = ({ setClickHint, hint }: HintViewProps) => {
     return (
-        <div className="w-[500px] absolute min-h-2 pb-5 rounded bg-gray-700 shadow-sm shadow-black">
+        <div className="w-[500px] absolute min-h-2 pb-5 rounded bg-white shadow-sm shadow-black">
             <div className="w-full flex justify-end items-center">
                 <button
                     onClick={() => setClickHint(false)}

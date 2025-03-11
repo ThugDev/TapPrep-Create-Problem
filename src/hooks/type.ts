@@ -1,8 +1,9 @@
 import { InterviewAnswerProps } from '../components/answer/type'
 
 export type UseProblemListProps = {
-    sectorName: string
+    sectorName: string | undefined
     difficulty: number
+    page: number
 }
 
 export type sumbitAnswerProps = {
