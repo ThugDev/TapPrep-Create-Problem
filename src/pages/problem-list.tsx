@@ -1,54 +1,45 @@
-import { useLocation, useNavigate } from 'react-router-dom'
-import { SectorDataType } from './type'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useState } from 'react'
 import { useProblemList } from '../hooks/use-problem-list'
 import DifficultySelector from '../components/problemList/difficulty-selector'
 import ProblemListContent from '../components/problemList/problem-list-content'
-import LoadingPage from '../components/common/loading-page'
-import ErrorPage from '../components/common/error-page'
 
 const ProblemList = () => {
-    const { state } = useLocation()
-    const sector: SectorDataType = state.sector
+    const { sector } = useParams<{ sector: string }>()
     const [selectedDifficulty, setSelectedDifficulty] = useState(1)
+    const [page, setPage] = useState<number>(1)
     const navigate = useNavigate()
 
-    const {
-        data,
-        fetchNextPage,
-        hasNextPage,
-        isLoading,
-        isError,
-        isFetchingNextPage,
-    } = useProblemList({
-        sectorName: sector.name,
+    console.log(sector, 'sector')
+
+    const { data } = useProblemList({
+        sectorName: sector,
         difficulty: selectedDifficulty,
+        page,
     })
 
-    if (isLoading) <LoadingPage />
-    if (isError) <ErrorPage message="문제 데이터가 없습니다." />
-
     const handleSelectProblem = (problem_id: number) => {
-        navigate('/selectedSector/problemList/problemDetail', {
+        navigate('/dashboard/problemDetail', {
             state: { problem_id: problem_id },
         })
     }
 
     return (
-        <div className="w-full h-full flex-center flex-col ">
-            <DifficultySelector
-                selectedDifficulty={selectedDifficulty}
-                onSelectDifficulty={setSelectedDifficulty}
-            />
-            <div className="w-full text-2xl font-bold flex-center p-4 my-24">
-                {sector.name}
+        <div className="w-full h-full flex-center flex-col overflow-y-auto ">
+            <div className="w-full text-4xl font-bold flex-center p-4 my-2">
+                {sector}
+            </div>
+            <div className="w-[30%] flex justify-end">
+                <DifficultySelector
+                    selectedDifficulty={selectedDifficulty}
+                    onSelectDifficulty={setSelectedDifficulty}
+                />
             </div>
             <ProblemListContent
                 data={data}
-                fetchNextPage={fetchNextPage}
-                hasNextPage={hasNextPage}
-                isFetchingNextPage={isFetchingNextPage}
                 handleSelecteProblem={handleSelectProblem}
+                page={page}
+                setPage={setPage}
             />
         </div>
     )

@@ -9,7 +9,7 @@ const AnswerForm = ({
     setAnswerOX,
 }: AnswerFormProps) => {
     return (
-        <div className="w-full">
+        <div className="w-[50%]">
             <p className="mb-2">답안 작성</p>
             {problemType === 3 ? (
                 <ProblemAnswerText

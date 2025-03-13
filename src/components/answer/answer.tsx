@@ -46,11 +46,11 @@ const Answer = ({ data }: InterviewAnswerProps) => {
                     onSelect={handleSelectedOption}
                 />
             )}
-            <div className="w-full flex justify-center items-end">
+            <div className="w-[50%] flex justify-end items-end">
                 <button
                     onClick={() => submitAnswer({ formData })}
                     disabled={isAnswerDisabled}
-                    className="p-2 mt-4 bg-gray-700 rounded cursor-pointer"
+                    className=" py-1 px-6 mt-4 border rounded cursor-pointer"
                 >
                     <p>제출</p>
                 </button>

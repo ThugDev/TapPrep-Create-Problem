@@ -6,9 +6,9 @@ const RootLayout = () => {
     return (
         <>
             <Header />
-            <div className="h-[calc(100vh-50px)]">
+            <main className="h-screen">
                 <Outlet />
-            </div>
+            </main>
             <Footer />
         </>
     )
