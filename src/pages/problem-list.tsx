@@ -10,8 +10,6 @@ const ProblemList = () => {
     const [page, setPage] = useState<number>(1)
     const navigate = useNavigate()
 
-    console.log(sector, 'sector')
-
     const { data } = useProblemList({
         sectorName: sector,
         difficulty: selectedDifficulty,
