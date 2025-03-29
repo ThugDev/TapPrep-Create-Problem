@@ -43,6 +43,7 @@ axiosInstance.interceptors.response.use(
                 }
             } catch (refreshError) {
                 console.error('토큰 갱신 실패', refreshError)
+                window.location.href = '/signIn'
             }
         }
         return Promise.reject(error)
