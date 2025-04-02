@@ -1,8 +1,10 @@
 import { axiosInstance } from './axios-instance'
 import {
+    CreateProblemResponse,
     GetProblemDetailProps,
     GetProblemListProps,
     GetProblemListResponse,
+    PostCreateProblemProps,
     PostProblemAnswerProps,
     PostProblemAnswerResponse,
 } from './type'
@@ -35,6 +37,25 @@ export const postProblemAnswer = async ({
         {
             problemId,
             option,
+        }
+    )
+    return response.data
+}
+
+export const postCreateProblem = async (props: PostCreateProblemProps) => {
+    const response = await axiosInstance.post<CreateProblemResponse>(
+        '/api/problem',
+        {
+            sector: props.sector,
+            sectorType: props.sectorType,
+            difficulty: props.difficulty,
+            type: props.type,
+            title: props.title,
+            description: props.description,
+            answer: props.answer,
+            hint: props.hint,
+            explanation: props.explanation,
+            reference: props.reference,
         }
     )
     return response.data
