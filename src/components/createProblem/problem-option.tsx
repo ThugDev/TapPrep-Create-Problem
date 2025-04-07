@@ -1,21 +1,13 @@
 type ProblemOptionProps = {
     type: string[] | string | boolean
-    options: string[]
-    answer: string
-    onOptionChange: (index: number, value: string) => void
-    onSelectedOX: (value: boolean) => void
-    onChange: (
-        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-    ) => void
+    answer: string | string[]
+    onAnswerChange: (value: string | string[]) => void
 }
 
 const ProblemOption = ({
     type,
-    options,
-    onOptionChange,
-    onSelectedOX,
     answer,
-    onChange,
+    onAnswerChange,
 }: ProblemOptionProps) => {
     return (
         <>
@@ -24,14 +16,19 @@ const ProblemOption = ({
                     <label className="block text-sm font-medium mb-2">
                         객관식 선택지 (최대 5개)
                     </label>
-                    {options.map((option, index) => (
+                    {Array.from({ length: 5 }).map((_, index) => (
                         <input
                             key={index}
                             type="text"
-                            value={option}
-                            onChange={(e) =>
-                                onOptionChange(index, e.target.value)
+                            value={
+                                (Array.isArray(answer) ? answer[index] : '') ||
+                                ''
                             }
+                            onChange={(e) => {
+                                const updatedAnswer = [...(answer as string[])]
+                                updatedAnswer[index] = e.target.value
+                                onAnswerChange(updatedAnswer)
+                            }}
                             className="w-full p-2 border rounded mb-2"
                             placeholder={`선택지 ${index + 1}`}
                         />
@@ -49,7 +46,7 @@ const ProblemOption = ({
                             return (
                                 <div
                                     key={choice}
-                                    onClick={() => onSelectedOX(choice === 'O')}
+                                    onClick={() => onAnswerChange(choice)}
                                     className={`cursor-pointer px-4 py-2 border rounded ${
                                         answer === choice
                                             ? 'ring-2 ring-offset-2 ring-blue-500 bg-[#E1F2FF]'
@@ -73,7 +70,7 @@ const ProblemOption = ({
                         type="text"
                         name="answer"
                         value={answer}
-                        onChange={onChange}
+                        onChange={(e) => onAnswerChange(e.target.value)}
                         className="w-full p-2 border rounded"
                         placeholder="정답을 입력하세요"
                         required

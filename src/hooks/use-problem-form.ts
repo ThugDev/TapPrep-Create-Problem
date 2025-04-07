@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import { ProblemDataType } from '../components/createProblem/type'
 
 export const useProblemForm = (initialState: ProblemDataType) => {
@@ -12,23 +12,20 @@ export const useProblemForm = (initialState: ProblemDataType) => {
         setProblemData((prev) => ({ ...prev, [name]: value }))
     }
 
-    const handleOptionChange = (index: number, value: string) => {
-        const updatedOptions = [...problemData.options]
-        updatedOptions[index] = value
-        setProblemData((prev) => ({ ...prev, options: updatedOptions }))
-    }
-
-    const handleSelect = (field: string, value: string | number | boolean) => {
-        setProblemData((prev) => ({
-            ...prev,
-            [field]:
-                field === 'answer' && prev.type === 'tf'
-                    ? value === 'O'
-                        ? true
-                        : false
-                    : value,
-        }))
-    }
+    const handleSelect = useCallback(
+        (field: string, value: string | string[] | number | boolean) => {
+            setProblemData((prev) => ({
+                ...prev,
+                [field]:
+                    field === 'answer' && prev.type === 'tf'
+                        ? value === 'O'
+                            ? true
+                            : false
+                        : value,
+            }))
+        },
+        []
+    )
 
     const resetAnswerForOX = () => {
         if (problemData.type === 'tf') {
@@ -42,7 +39,7 @@ export const useProblemForm = (initialState: ProblemDataType) => {
     return {
         problemData,
         handleChange,
-        handleOptionChange,
+
         handleSelect,
         resetAnswerForOX,
     }
