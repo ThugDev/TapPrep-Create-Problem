@@ -3,10 +3,7 @@ import UserDashBoard from '../components/dashBoard/user-dashboard'
 import { useUserProfile } from '../hooks/use-user-profile'
 
 const DashBoard = () => {
-    const { userProfileData, isLoading, isError } = useUserProfile()
-
-    if (isLoading) <div>Loading...</div>
-    if (isError) <div>오류가 발생했습니다.</div>
+    const { userProfileData } = useUserProfile()
 
     return (
         <div className="w-full h-full flex-center">

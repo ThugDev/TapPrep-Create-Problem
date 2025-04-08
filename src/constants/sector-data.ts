@@ -35,7 +35,7 @@ export const SectorData = [
         legendFontSize: 15,
     },
     {
-        name: 'Next.js',
+        name: 'NextJs',
         population: 10,
         color: '#000000',
         legendFontColor: '#fff',

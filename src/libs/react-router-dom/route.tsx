@@ -27,6 +27,10 @@ const MEMBER_ROUTER: RouteObject = {
             path: `/dashboard/problemDetail`,
             element: <ProblemDetail />,
         },
+        {
+            path: `/create-problem`,
+            element: <CreateProblem />,
+        },
     ],
 }
 

@@ -5,7 +5,14 @@ import { useUserProfile } from '../hooks/use-user-profile'
 const Home = () => {
     const navigate = useNavigate()
 
-    const { userProfileData } = useUserProfile()
+    let userProfileData
+
+    try {
+        const { userProfileData: fetchData } = useUserProfile()
+        userProfileData = fetchData
+    } catch (error) {
+        console.error('Error fetching user profile:', error)
+    }
 
     const handleClick = () => {
         navigate('/signIn')

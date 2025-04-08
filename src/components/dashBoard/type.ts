@@ -16,5 +16,15 @@ export interface ToggleSwitchProps {
 }
 
 export type DashboardUserProfileProps = {
-    userProfileData?: UserProfileResponse
+    userProfileData?: UserProfileResponse | null
+}
+
+export type MySolutionContentProps = {
+    mergedData: {
+        correct: number
+        total: number
+        name: string
+        image: string
+    }[]
+    onSector: (name: string) => void
 }

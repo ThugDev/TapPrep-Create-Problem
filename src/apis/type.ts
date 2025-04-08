@@ -114,3 +114,30 @@ export type GetStatFeResponse = {
     message: string
     stats: statType[]
 }
+
+// create problem
+export type CreateProblemResponse = {
+    sector: string
+    sectorType: string
+    difficulty: number
+    type: string
+    title: string
+    description: string
+    answer: string[] | boolean | string
+    hint: string
+    explanation: string
+    reference: string
+}
+
+export type PostCreateProblemProps = {
+    sector: string
+    sectorType: string
+    difficulty: number
+    type: string
+    title: string
+    description: string
+    answer: string[] | boolean | string
+    hint: string
+    explanation: string
+    reference: string
+}

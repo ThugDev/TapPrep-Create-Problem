@@ -9,6 +9,8 @@ import {
     FeSectorData,
 } from '../../constants/solution-icon-images'
 import { useNavigate } from 'react-router-dom'
+import MySolutionContent from './my-solution-content'
+import CreateNavigateButton from './create-navigate-button'
 
 const MySolutions = () => {
     const [currentView, setCurrentView] = useState('FE')
@@ -34,38 +36,13 @@ const MySolutions = () => {
     }
 
     return (
-        <div className="w-full flex-center flex-col rounded-full -mt-16">
+        <div className=" relative w-full flex-center flex-col  -mt-16">
             <ToggleSwitch onToggle={handleToggle} />
-            <div className="h-[300px] flex-center">
-                <div className="w-full px-8 grid grid-cols-4">
-                    {mergedData.map((item, index) => {
-                        const progressPercent =
-                            (item.correct / item.total) * 100
-                        return (
-                            <div
-                                key={index}
-                                className="w-24 h-24"
-                                onClick={() => handleSector(item.name)}
-                            >
-                                <img
-                                    src={item.image}
-                                    className={`w-20 h-20 hover:cursor-pointer ${item.correct === 0 ? ' opacity-50' : ' opacity-100'}`}
-                                />
-                                <div className="w-[60%]  bg-[#D9D9D9] h-1 mt-1 ml-2 rounded">
-                                    {item.correct !== 0 && (
-                                        <div
-                                            className="bg-[#0F99E4] h-1 rounded"
-                                            style={{
-                                                width: `${progressPercent}%`,
-                                            }}
-                                        />
-                                    )}
-                                </div>
-                            </div>
-                        )
-                    })}
-                </div>
-            </div>
+            <MySolutionContent
+                mergedData={mergedData}
+                onSector={handleSector}
+            />
+            <CreateNavigateButton />
         </div>
     )
 }
