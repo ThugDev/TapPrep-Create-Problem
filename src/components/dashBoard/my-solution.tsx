@@ -21,6 +21,8 @@ const MySolutions = () => {
         queryFn: currentView === 'FE' ? getStatFe : getStatBe,
     })
 
+    const isAdmin = localStorage.getItem('isAdmin')
+
     const handleToggle = (value: ToggleType) => {
         setCurrentView(value)
     }
@@ -36,13 +38,13 @@ const MySolutions = () => {
     }
 
     return (
-        <div className=" relative w-full flex-center flex-col  -mt-16">
+        <div className=" relative w-full flex-center flex-col -mt-16">
             <ToggleSwitch onToggle={handleToggle} />
             <MySolutionContent
                 mergedData={mergedData}
                 onSector={handleSector}
             />
-            <CreateNavigateButton />
+            {isAdmin === 'admin' && <CreateNavigateButton />}
         </div>
     )
 }
