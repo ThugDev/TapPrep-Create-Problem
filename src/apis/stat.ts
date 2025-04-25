@@ -3,6 +3,7 @@ import { GetStatFeResponse } from './type'
 
 export const getStatFe = async () => {
     const response = await axiosInstance<GetStatFeResponse>('/api/stat/fe')
+
     return response.data
 }
 

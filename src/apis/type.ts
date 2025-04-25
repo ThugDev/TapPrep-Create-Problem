@@ -106,7 +106,8 @@ export type UserProfileResponse = {
 export type statType = {
     correct: number
     sector_name: string
-    total: number
+    totalCount: number
+    solvedCount: number
 }
 
 export type GetStatFeResponse = {

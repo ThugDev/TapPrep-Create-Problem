@@ -21,8 +21,9 @@ export type DashboardUserProfileProps = {
 
 export type MySolutionContentProps = {
     mergedData: {
+        solvedCount: number
         correct: number
-        total: number
+        totalCount: number
         name: string
         image: string
     }[]

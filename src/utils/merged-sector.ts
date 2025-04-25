@@ -15,8 +15,9 @@ export const MergedSector = ({ sectorData, data }: MergedSectorProp) => {
         )
         return {
             ...sector,
+            solvedCount: matchingStat?.solvedCount ?? 0,
             correct: matchingStat?.correct ?? 0,
-            total: matchingStat?.total ?? 0,
+            totalCount: matchingStat?.totalCount ?? 0,
         }
     })
     return merged
