@@ -1,18 +1,12 @@
 import { useNavigate } from 'react-router-dom'
+import Cookies from 'js-cookie'
 import { TapPerpContent } from '../constants/tapprep-content'
-import { useUserProfile } from '../hooks/use-user-profile'
 
 const Home = () => {
     const navigate = useNavigate()
 
-    let userProfileData
-
-    try {
-        const { userProfileData: fetchData } = useUserProfile()
-        userProfileData = fetchData
-    } catch (error) {
-        console.error('Error fetching user profile:', error)
-    }
+    const accessToken = Cookies.get('accessToken')
+    const userName = accessToken ? localStorage.getItem('userName') : null
 
     const handleClick = () => {
         navigate('/signIn')
@@ -22,10 +16,7 @@ const Home = () => {
         <div className="relative w-full h-full bg-white">
             <div className="w-full flex-center flex-col absolute top-1/3 z-10 ">
                 <div className="text-2xl font-bold">
-                    어서오세요,{' '}
-                    {userProfileData
-                        ? userProfileData.userData.nickname
-                        : '면접자'}
+                    어서오세요, {userName ? userName : '면접자'}
                     님!
                 </div>
                 <div className=" w-full flex-center flex-col text-xs mt-12">
