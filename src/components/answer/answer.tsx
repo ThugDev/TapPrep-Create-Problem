@@ -48,7 +48,9 @@ const Answer = ({ data }: InterviewAnswerProps) => {
             )}
             <div className="w-[50%] flex justify-end items-end">
                 <button
-                    onClick={() => submitAnswer({ formData })}
+                    onClick={async () => {
+                        submitAnswer({ formData })
+                    }}
                     disabled={isAnswerDisabled}
                     className=" py-1 px-6 mt-4 border rounded cursor-pointer"
                 >

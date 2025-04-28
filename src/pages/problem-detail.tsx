@@ -10,7 +10,6 @@ import Answer from '../components/answer/answer'
 const ProblemDetail = () => {
     const { state } = useLocation()
     const { problem_id } = state
-
     const { data } = useQuery<GetProblemDetailResponse>({
         queryKey: ['problemDetail'],
         queryFn: () => getProblemDetail({ problem_id: problem_id }),
@@ -18,9 +17,7 @@ const ProblemDetail = () => {
 
     return (
         <div className="flex-center">
-            <div
-                className={`w-[1280px] relative max-w-full h-full ${data?.isSolved === true ? 'grid grid-cols-2' : 'flex-center'} py-20`}
-            >
+            <div className={`w-full relative max-w-full h-full py-20 `}>
                 <div className="w-full overflow-y-auto">
                     <div className="flex-1 flex-center flex-col">
                         {data && (
@@ -35,20 +32,20 @@ const ProblemDetail = () => {
                         )}
                     </div>
                 </div>
-
-                {data?.isSolved === true && (
-                    <>
-                        <div className="h-[80%] border border-[#e9e9e9] rounded-md absolute left-1/2 top-28" />
-                        <div className="w-full flex-center">
-                            <AnswerExplanation
-                                isCorrect={data?.problemData.isCorrect}
-                                explanation={data?.problemData.explanation}
-                                reference={data?.problemData.reference}
-                            />
-                        </div>
-                    </>
-                )}
             </div>
+
+            {data?.isSolved === true && (
+                <>
+                    <div className="h-[80%] border border-[#e9e9e9] rounded-md absolute left-1/2 top-28" />
+                    <div className="w-full flex-center">
+                        <AnswerExplanation
+                            isCorrect={data?.problemData.isCorrect}
+                            explanation={data?.problemData.explanation}
+                            reference={data?.problemData.reference}
+                        />
+                    </div>
+                </>
+            )}
         </div>
     )
 }

@@ -8,7 +8,7 @@ const Header = () => {
     }
 
     return (
-        <div className="w-full h-[50px] flex justify-center items-center bg-[#fff] fixed border-b-[1px] border-[#e3e5eb]">
+        <div className="w-full h-[50px] flex justify-center items-center bg-[#fff] fixed border-b-[1px] border-[#e3e5eb] z-50">
             <div className="w-[90%] h-full font-bold flex justify-between items-center text-black">
                 <div onClick={handleLogo} className="cursor-pointer">
                     Tap&Prep
