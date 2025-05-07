@@ -10,7 +10,6 @@ const MySolutionContent = ({
                 {mergedData.map((item, index) => {
                     const progressPercent =
                         (item.solvedCount / item.totalCount) * 100
-                    console.log(item)
                     return (
                         <div
                             key={index}

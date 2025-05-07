@@ -33,12 +33,14 @@ const ProblemList = () => {
                     onSelectDifficulty={setSelectedDifficulty}
                 />
             </div>
-            <ProblemListContent
-                data={data}
-                handleSelecteProblem={handleSelectProblem}
-                page={page}
-                setPage={setPage}
-            />
+            {data && (
+                <ProblemListContent
+                    data={data}
+                    handleSelecteProblem={handleSelectProblem}
+                    page={page}
+                    setPage={setPage}
+                />
+            )}
         </div>
     )
 }

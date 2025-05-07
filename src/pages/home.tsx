@@ -32,8 +32,8 @@ const Home = () => {
                     </button>
                 </div>
             </div>
-            <div className="fixed bottom-0">
-                <img src="/assets/image/web-bg-image.svg" />
+            <div className="fixed bottom-0 w-full">
+                <img src="/assets/image/web-bg-image.svg" width={'100%'} />
             </div>
         </div>
     )
