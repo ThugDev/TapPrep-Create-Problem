@@ -1,7 +1,7 @@
 import { TapPerpContent } from '../constants/tapprep-content'
 
 const SignIn = () => {
-    const gitLoginURL = `https://github.com/login/oauth/authorize?client_id=${import.meta.env.VITE_GITHUB_CLIENT_ID}&state=dev`
+    const gitLoginURL = `https://github.com/login/oauth/authorize?client_id=${import.meta.env.VITE_GITHUB_CLIENT_ID}&state=web`
 
     const handleGitLogin = () => {
         window.open(gitLoginURL, '_self')
